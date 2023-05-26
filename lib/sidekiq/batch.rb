@@ -114,6 +114,7 @@ module Sidekiq
     end
 
     def increment_job_queue(jid)
+      @pending_jids ||= []
       @queued_jids << jid
       @pending_jids << jid
       conditional_redis_increment!
